@@ -75,7 +75,7 @@
                         </div>
                       <div class='form-group col-md-2'>
                           <label>Jumlah Barang</label>
-                          <input type="number" name="jumlah" class="form-control">
+                          <input type="number" name="jumlah" <?php if (!empty($_GET['j'])) {?>value="<?php echo $_GET['j'];?>"<?php } ?> class="form-control">
                       </div>
                       <div class='form-group col-md-2'>
                         <label>.</label>

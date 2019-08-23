@@ -6,12 +6,32 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Hackaton Pertamina</h1>
+            <h1>Premium</h1>
           </div>
 
           <div class="section-body">
-          	            <?php 
+          	            
+              <?php 
+/*                  include 'koneksi.php';
+                  $query = mysqli_query($conn, "SELECT * FROM pengiriman WHERE id_pengirim = '$_SESSION[id]'");
+                  while ($data = mysqli_fetch_array($query)) { 
+                    if ($data['status'] == "sampai" && empty($data['click'])) {*/ ?>
+                    <div class="alert alert-primary alert-dismissible show fade">
+                      <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                          <span>&times;</span>
+                        </button>
+                        Apakah Anda Ingin Memesan Fastron 300 unit? <a href="kirim.php?p=1&j=300" style="color:cyan">Klik Pesan Sekarang!</a>.
+                      </div>
+                    </div>
+               <?php     
+                //   }
+                // }
+               ?>
+
+                        <?php 
             error_reporting(0);
+
             if ($_GET['input']=="sukses") {
               # code...
 
@@ -42,18 +62,18 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Cek Ketersediaan</h4>
-                  </div>
+                    <h4>Check Produk</h4>
+                  </div><!-- 
                   <form method="get" >
                     <div class="card-body">
                       <div class='form-row'>
                       <div class='form-group col-md-2'>
-                      <?php $date = date('Y'); ?>
+                      <?php //$date = date('Y'); ?>
                           <select name="tahun" class="form-control">
                             <option value="0">Pilih Tahun</option>
-                            <?php for ($i=2018; $i <= $date ; $i++) { ?>
-                           <option><?php echo $i ?></option>
-                           <?php } ?>
+                            <?php //for ($i=2018; $i <= $date ; $i++) { ?>
+                           <option><?php //echo $i ?></option>
+                           <?php //} ?>
                            <option value="0">Lihat Semua</option>
                           </select>
                         </div>
@@ -62,12 +82,60 @@
                       </div>  
                       </div>
                     </div>
-                    </form>
+                    </form> -->
 <!--                     <div class="card-body">
                     	<div class="button">
                       		<a href="lap_barang.php" target="_blank" class="btn btn-icon icon-left btn-danger"><i class="fas fa-print"></i> Cetak</a>
                   		</div>
                   	</div> -->
+
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-striped" id="table-2">
+                        <thead>
+                          <tr>
+                            <th class="text-center">
+                              <div class="custom-checkbox custom-control">
+                                <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
+                                <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
+                              </div>
+                            </th>
+                            <th>No.</th>
+                            <th>Kode Barang</th>
+                            <th>Nama Barang</th>
+                            <th>Harga</th>
+                            <th>Jumlah Pemesanan</th>
+                            <th>Checkout</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php 
+                          $brg=mysqli_query($conn, "SELECT * FROM barang");
+                          $no=1;
+                          while($b=mysqli_fetch_array($brg)){
+                            ?>                                 
+                          <tr>
+                            <td>
+                              <div class="custom-checkbox custom-control">
+                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1">
+                                <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
+                              </div>
+                            </td>                                
+                            <td><?php echo $no++ ?></td>
+                            <td><?php echo $b[1] ?></td>
+                            <td><?php echo ucwords($b[2]) ?></td>
+<!--                             <td><?php //echo date('d-M-Y', strtotime($b[3])) ?></td>
+                            <td><?php // echo $b[4] ?></td> -->
+                            <td><?php echo 'Rp.'.number_format($b[5]) ?></td>
+                            <td><input type="number" class="form-control" min="0" name="jumlah"></td>
+                            <td><a href="" class="form-control btn-warning"><i class="fas fa-shopping-cart"></i></a></td>
+                          </tr>
+<?php } ?>
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table table-striped" id="table-1">
@@ -78,8 +146,8 @@
                             </th>
                             <th>Kode Barang</th>
                             <th>Nama Barang</th>
-                            <th>Tanggal Masuk</th>
-                            <th>Jumlah (Unit)</th>
+                            <!-- <th>Tanggal Masuk</th> -->
+                            <!-- <th>Jumlah (Unit)</th> -->
                             <th>Harga</th>
                           </tr>
                         </thead>
@@ -93,9 +161,10 @@
                             <td><?php echo $no++ ?></td>
                             <td><?php echo $b[1] ?></td>
                             <td><?php echo ucwords($b[2]) ?></td>
-                            <td><?php echo date('d-M-Y', strtotime($b[3])) ?></td>
-                            <td><?php echo $b[4] ?></td>
+<!--                             <td><?php //echo date('d-M-Y', strtotime($b[3])) ?></td>
+                            <td><?php // echo $b[4] ?></td> -->
                             <td><?php echo 'Rp.'.number_format($b[5]) ?></td>
+                          </tr>
                           <?php } ?>
                         </tbody>
                       </table>

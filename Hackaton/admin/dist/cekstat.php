@@ -47,7 +47,7 @@
                       <div class='form-row'>
                       <div class='form-group col-md-5'>
                           <label>No. Resi Pengiriman </label>
-                          <input type="text" name="cari" class="form-control">
+                          <input type="text" name="resi" class="form-control">
                       </div>
                       <div class='form-group col-md-2'>
                         <label>.</label>
@@ -57,106 +57,113 @@
                     </div>
                   </form>
                 </div>
+                <div class="row mt-4">
+                      <div class="col-12 col-lg-8 offset-lg-2">
+                        <div class="wizard-steps">
+                          <div class="wizard-step wizard-step-active">
+                            <div class="wizard-step-icon">
+                              <i class="fas fa-tshirt"></i>
+                            </div>
+                            <div class="wizard-step-label">
+                              Order Placed
+                            </div>
+                          </div>
+                          <div class="wizard-step wizard-step-active">
+                            <div class="wizard-step-icon">
+                              <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="wizard-step-label">
+                              Payment Completed
+                            </div>
+                          </div>
+                          <div class="wizard-step wizard-step-active">
+                            <div class="wizard-step-icon">
+                              <i class="fas fa-shipping-fast"></i>
+                            </div>
+                            <div class="wizard-step-label">
+                              Product Shipped
+                            </div>
+                          </div>
+                          <div class="wizard-step wizard-step-success">
+                            <div class="wizard-step-icon">
+                              <i class="fas fa-check"></i>
+                            </div>
+                            <div class="wizard-step-label">
+                              Order Completed
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
               </div>
             </div>
           </div>
           <div class="section-body">
-            <h2 class="section-title">1 Agustus 2018</h2>
+            <h2 class="section-title"><?php echo date('d-M-Y') ?></h2>
             <div class="row">
               <div class="col-12">
                 <div class="activities">
+                  <?php  
+                    include 'koneksi.php';
+                    function waktu_lalu($timestamp){
+                        $selisih = time() - strtotime($timestamp) ;
+                        $detik = $selisih ;
+                        $menit = round($selisih / 60 );
+                        $jam = round($selisih / 3600 );
+                        $hari = round($selisih / 86400 );
+                        $minggu = round($selisih / 604800 );
+                        $bulan = round($selisih / 2419200 );
+                        $tahun = round($selisih / 29030400 );
+                        if ($detik <= 60) {
+                            $waktu = $detik.' detik yang lalu';
+                        } else if ($menit <= 60) {
+                            $waktu = $menit.' menit yang lalu';
+                        } else if ($jam <= 24) {
+                            $waktu = $jam.' jam yang lalu';
+                        } else if ($hari <= 7) {
+                            $waktu = $hari.' hari yang lalu';
+                        } else if ($minggu <= 4) {
+                            $waktu = $minggu.' minggu yang lalu';
+                        } else if ($bulan <= 12) {
+                            $waktu = $bulan.' bulan yang lalu';
+                        } else {
+                            $waktu = $tahun.' tahun yang lalu';
+                        }
+                        return $waktu;
+                    }
+
+                    if (!empty($_GET['resi'])) {
+                      $resi = $_GET['resi'];
+                      $query = mysqli_query($conn, "SELECT pengiriman.*, tagihan.* FROM tagihan, pengiriman WHERE pengiriman.id_pengirim = '$_SESSION[id]' AND pengiriman.id_pengiriman = '$resi' AND pengiriman.id_pengiriman = tagihan.id_pengiriman AND tagihan.approve = 0");
+                    }else{
+
+                    }
+                    while ($data = mysqli_fetch_array($query)) {
+                  ?>
                   <div class="activity">
                     <div class="activity-icon bg-primary text-white shadow-primary">
                       <i class="fa fa-map-marker-alt"></i>
                     </div>
                     <div class="activity-detail">
                       <div class="mb-2">
-                        <span class="text-job text-primary">2 Minggu lalu</span>
+                        <span class="text-job text-primary"><?php echo waktu_lalu($data[11]) ?></span>
                         <span class="bullet"></span>
                         <!-- <a class="text-job" href="#">View</a> -->
                         <div class="float-right dropdown">
-                         <!-- <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
+                         <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
                            <div class="dropdown-menu">
                             <div class="dropdown-title">Options</div>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
+                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View On Maps</a>
                             <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item has-icon text-danger" data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?" data-confirm-text-yes="Yes, IDC"><i class="fas fa-trash-alt"></i> Archive</a>
-                          </div> -->
+                          </div>
                         </div>
                       </div>
-                      <p>Sampai di Gudang Bandung.</p>
+                      <p><?php echo ucwords($data['status'])." ".ucwords($data['posisi']); ?>.</p>
                     </div>
                   </div>
-                  <div class="activity">
-                    <div class="activity-icon bg-primary text-white shadow-primary">
-                      <i class="fa fa-map-marker-alt"></i>
-                    </div>
-                    <div class="activity-detail">
-                      <div class="mb-2">
-                        <span class="text-job text-primary">1 Minggu lalu</span>
-                        <span class="bullet"></span>
-                        <!-- <a class="text-job" href="#">View</a> -->
-                        <div class="float-right dropdown">
-                         <!-- <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                           <div class="dropdown-menu">
-                            <div class="dropdown-title">Options</div>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item has-icon text-danger" data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?" data-confirm-text-yes="Yes, IDC"><i class="fas fa-trash-alt"></i> Archive</a>
-                          </div> -->
-                        </div>
-                      </div>
-                      <p>Sampai di Gudang Lampung.</p>
-                    </div>
-                  </div>
-                  <div class="activity">
-                    <div class="activity-icon bg-primary text-white shadow-primary">
-                      <i class="fa fa-map-marker-alt"></i>
-                    </div>
-                    <div class="activity-detail">
-                      <div class="mb-2">
-                        <span class="text-job text-primary">4 Minggu lalu</span>
-                        <span class="bullet"></span>
-                        <!-- <a class="text-job" href="#">View</a> -->
-                        <div class="float-right dropdown">
-                         <!-- <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                           <div class="dropdown-menu">
-                            <div class="dropdown-title">Options</div>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item has-icon text-danger" data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?" data-confirm-text-yes="Yes, IDC"><i class="fas fa-trash-alt"></i> Archive</a>
-                          </div> -->
-                        </div>
-                      </div>
-                      <p>Sampai di Gudang Bukittinggi.</p>
-                    </div>
-                  </div>
-                  <div class="activity">
-                    <div class="activity-icon bg-primary text-white shadow-primary">
-                      <i class="fa fa-map-marker-alt"></i>
-                    </div>
-                    <div class="activity-detail">
-                      <div class="mb-2">
-                        <span class="text-job text-primary">4 Jam lalu</span>
-                        <span class="bullet"></span>
-                        <!-- <a class="text-job" href="#">View</a> -->
-                        <div class="float-right dropdown">
-                         <!-- <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                           <div class="dropdown-menu">
-                            <div class="dropdown-title">Options</div>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item has-icon text-danger" data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?" data-confirm-text-yes="Yes, IDC"><i class="fas fa-trash-alt"></i> Archive</a>
-                          </div> -->
-                        </div>
-                      </div>
-                      <p>Sampai di Gudang Padang.</p>
-                    </div>
-                  </div>
+                  <?php 
+                    } 
+                  ?>
                 </div>
               </div>
             </div>
