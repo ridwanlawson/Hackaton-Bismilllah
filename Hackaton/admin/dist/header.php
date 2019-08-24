@@ -160,7 +160,7 @@
             <li class="menu-header">Dashboard</li>
             
             <li><a class="nav-link active" href="index_admin.php"><i class="fas fa-fire"></i> <span>Cek Ketersediaan</span></a></li>
-            <li><a class="nav-link active" href="kirim.php"><i class="fas fa-pencil-ruler"></i>  <span>Kirim Barang</span></a></li>
+            <li><a class="nav-link active" href="kirim.php"><i class="fas fa-pencil-ruler"></i>  <span>Pesan Barang</span></a></li>
             <li><a class="nav-link active" href="cekstat.php"><i class="far fa-file-alt"></i> <span>Cek Status Pengiriman</span></a></li>
             <li><a class="nav-link active" href="keranjang.php"><i class="far fa-file-alt"></i> <span>Keranjang</span></a></li>
             <!-- <li class="menu-header">Entry</li> -->
