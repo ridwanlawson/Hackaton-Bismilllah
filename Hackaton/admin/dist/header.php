@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
   <!-- CSS Libraries -->
+  <link rel="stylesheet" href="assets/modules/jqvmap/dist/jqvmap.min.css">
+  <link rel="stylesheet" href="assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="assets/modules/summernote/summernote-bs4.css">
   <link rel="stylesheet" href="assets/modules/codemirror/lib/codemirror.css">
   <link rel="stylesheet" href="assets/modules/codemirror/theme/duotone-dark.css">
@@ -79,6 +82,26 @@
                   }
                 }
                ?>
+
+              <?php 
+                  include 'koneksi.php';
+                  $query = mysqli_query($conn, "SELECT * FROM pengiriman WHERE id_pengirim = '$_SESSION[id]'");
+                  while ($data = mysqli_fetch_array($query)) { 
+                    if ($data['status'] == "sampai" && empty($data['click'])) { ?>
+                    <a href="#" class="dropdown-item dropdown-item-unread">
+                      <div class="dropdown-item-icon bg-primary text-white">
+                        <i class="fas fa-bell"></i>
+                      </div>
+                      <div class="dropdown-item-desc">
+                        Cetak PO Sekarang untuk Transaksi Lanjutan!
+                        <div class="time text-primary">2 Jam Lalu</div>
+                      </div>
+                    </a>
+               <?php     
+                  }
+                }
+               ?>
+
                 
                 <a href="#" class="dropdown-item">
                   <div class="dropdown-item-icon bg-info text-white">
@@ -158,21 +181,18 @@
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
+            <li><a class="nav-link active" href="home.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+            <li class="menu-header">Dashboard</li>
             
             <li><a class="nav-link active" href="index_admin.php"><i class="fas fa-fire"></i> <span>Cek Ketersediaan</span></a></li>
-            <li><a class="nav-link active" href="kirim.php"><i class="fas fa-pencil-ruler"></i>  <span>Pesan Barang</span></a></li>
-            <li><a class="nav-link active" href="cekstat.php"><i class="far fa-file-alt"></i> <span>Cek Status Pengiriman</span></a></li>
+            <li><a class="nav-link active" href="kirim.php"><i class="fas fa-pencil-ruler"></i>  <span>Pesan Barang </span></a></li>
             <li><a class="nav-link active" href="keranjang.php"><i class="far fa-file-alt"></i> <span>Keranjang</span></a></li>
+            <li><a class="nav-link active" href="cekstat.php"><i class="far fa-file-alt"></i> <span>Cek Status Pengiriman</span></a></li>
             <!-- <li class="menu-header">Entry</li> -->
 
             
           </ul>
-
-          <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-            <a href="logout.php" class="btn btn-primary btn-lg btn-block btn-icon-split">
-              <i class="fas fa-rocket"></i> Web PSB
-            </a>
-          </div>        </aside>
+        </aside>
       </div>
     <?php  }elseif ($_SESSION['level']=='user') {?>
             <div class="main-sidebar sidebar-style-2">

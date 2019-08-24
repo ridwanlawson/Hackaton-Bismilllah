@@ -23,8 +23,7 @@ include 'header.php' ?>
                             <th>Jumlah Barang</th>
                             <th>Kali Pengiriman</th>
                             <th>Harga</th>
-                            <th>Diskon</th>
-                            <th>Total</th>
+                            <th>Jumlah</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -35,34 +34,36 @@ include 'header.php' ?>
                             ?>                                 
                           <tr>
                             <td>1</td>
-                            <td>Aftur</td>
-                            <td>2 L</td>
+                            <td>Pertalite</td>
+                            <td>2 Kl</td>
                             <td>1</td>
-                            <td>2000</td>
-                            <td>200</td>
-                            <td align="right">3600</td>
+                            <td>Rp. 8,000</td>
+                            <td>Rp. 16,000,000</td>
                           </tr>                             
                           <tr>
                             <td>1</td>
-                            <td>BBM Industri</td>
-                            <td>2000 Kl</td>
+                            <td>Solar Non-Subsidi</td>
+                            <td>1 Kl</td>
                             <td>10</td>
-                            <td>12000</td>
-                            <td>-</td>
-                            <td align="right">120000</td>
+                            <td>Rp. 10,000</td>
+                            <td>Rp. 10,000,000</td>
                           </tr>
                           <?php //} ?>
                           <tr>
-                            <td align="right" style="" colspan="6"><b>Subtotal</b></td>
-                            <td>123600</td>
+                            <td align="right" style="" colspan="5"><b>Subtotal</b></td>
+                            <td>Rp. 26,000,000</td>
                           </tr>
                           <tr>
-                            <td align="right" colspan="6"><b>Diskon</b></td>
-                            <td>ss</td>
+                            <td align="right" colspan="5"><b>Diskon 10%</b></td>
+                            <td>Rp. 2,600,000</td>
                           </tr>
                           <tr>
-                            <td align="right" colspan="6"><b>Tax</b></td>
-                            <td>ss</td>
+                            <td align="right" colspan="5"><b>Tax 1%</b></td>
+                            <td>Rp. 260,000</td>
+                          </tr>
+                          <tr>
+                            <td align="right" colspan="5"><b>Total</b></td>
+                            <td>Rp. 23,140,000</td>
                           </tr>
                         </tbody>
                       </table>

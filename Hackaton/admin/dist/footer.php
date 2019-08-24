@@ -19,10 +19,14 @@
   <script src="assets/js/stisla.js"></script>
   
   <!-- JS Libraies -->
+  <script src="assets/modules/jquery.sparkline.min.js"></script>
+  <script src="assets/modules/chart.min.js"></script>
   <script src="assets/modules/prism/prism.js"></script>
+  <script src="assets/modules/owlcarousel2/dist/owl.carousel.min.js"></script>
   <script src="assets/modules/summernote/summernote-bs4.js"></script>
   <script src="assets/modules/codemirror/lib/codemirror.js"></script>
   <script src="assets/modules/codemirror/mode/javascript/javascript.js"></script>
+    <script src="assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
   <script src="assets/modules/jquery-selectric/jquery.selectric.min.js"></script>
   <script src="assets/modules/datatables/datatables.min.js"></script>
   <script src="assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
@@ -34,7 +38,14 @@
   <script src="assets/js/page/modules-datatables.js"></script>
   <script src="assets/modules/jquery-selectric/jquery.selectric.min.js"></script>
 
+  <!-- JS Libraies -->
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyB55Np3_WsZwUQ9NS7DP-HnneleZLYZDNw&amp;sensor=true"></script>
+  <script src="assets/modules/gmaps.js"></script>
 
+  <!-- Page Specific JS File -->
+  <script src="assets/js/page/gmaps-geolocation.js"></script>
+  <script src="assets/js/page/index.js"></script> 
+  
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>

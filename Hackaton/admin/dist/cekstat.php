@@ -134,7 +134,7 @@
 
                     if (!empty($_GET['resi'])) {
                       $resi = $_GET['resi'];
-                      $query = mysqli_query($conn, "SELECT pengiriman.*, tagihan.* FROM tagihan, pengiriman WHERE pengiriman.id_pengirim = '$_SESSION[id]' AND pengiriman.id_pengiriman = '$resi' AND pengiriman.id_pengiriman = tagihan.id_pengiriman AND tagihan.approve = 0");
+                      $query = mysqli_query($conn, "SELECT pengiriman.*, tagihan.* FROM tagihan, pengiriman WHERE pengiriman.id_penerima = '$_SESSION[id]' AND pengiriman.id_pengiriman = '$resi' AND pengiriman.id_pengiriman = tagihan.id_pengiriman AND tagihan.approve = 0");
                     }else{
 
                     }

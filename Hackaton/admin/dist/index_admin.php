@@ -12,21 +12,21 @@
           <div class="section-body">
           	            
               <?php 
-/*                  include 'koneksi.php';
+                  include 'koneksi.php';
                   $query = mysqli_query($conn, "SELECT * FROM pengiriman WHERE id_pengirim = '$_SESSION[id]'");
                   while ($data = mysqli_fetch_array($query)) { 
-                    if ($data['status'] == "sampai" && empty($data['click'])) {*/ ?>
+                    if ($data['status'] == "sampai" && $data['click'] == 0) { ?>
                     <div class="alert alert-primary alert-dismissible show fade">
                       <div class="alert-body">
                         <button class="close" data-dismiss="alert">
                           <span>&times;</span>
                         </button>
-                        Apakah Anda Ingin Memesan Fastron 300 unit? <a href="kirim.php?p=1&j=300" style="color:cyan">Klik Pesan Sekarang!</a>.
+                        Apakah Anda Ingin Memesan Fastron 300 unit? <a href="kirim.php" style="color:cyan">Klik Pesan Sekarang!</a>.
                       </div>
                     </div>
                <?php     
-                //   }
-                // }
+                  }
+                }
                ?>
 
                         <?php 
