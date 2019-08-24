@@ -6,7 +6,7 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Hackaton Pertamina</h1>
+            <h1>Premium</h1>
           </div>
 
           <div class="section-body">
@@ -46,60 +46,72 @@
                   </div>
                   <form method="get" >
                     <div class="card-body">
-                      <div class='form-row'>
+                     <div class='form-row'>
                       <div class='form-group col-md-2'>
-                          <label>Asal Lokasi</label>
-                          <select class="form-control" name="">
-                            <option>Nama Kota</option>
-                            <option>Padang</option>
-                            <option>Tangerang</option>
-                            <option>Banjarmasin</option>
+                          <input type="submit" name="add"  class="form-control btn-danger" value="Tambah">
+                      </div>
+                    </div>
+                  </div>
+                    <div class="card-body">
+                     <div class='form-row'>
+                      <div class='form-group col-md-2'>
+                          <label>Nama Barang</label>
+                          <select class="form-control" name="barang">
+                              <option>Nama Barang</option>
+                            <?php 
+                              include 'koneksi.php';
+                              $query = mysqli_query($conn, "SELECT * FROM barang");
+                              while ($data = mysqli_fetch_array($query)) {
+                             ?>
+                              <option value="<?php echo $data['id_brg'] ?>"><?php echo $data['nm_brg'] ?></option>
+                            <?php } ?>
                           </select>
                       </div>
-                      <div class='form-group col-md-2'>
-                          <label>Tujuan Lokasi</label>
-                          <select class="form-control" name="">
-                            <option>Nama Kota</option>
-                            <option>Padang</option>
-                            <option>Tangerang</option>
-                            <option>Banjarmasin</option>
-                          </select>
-                      </div>
-                      <div class='form-group col-md-4'>
-                        <label>Jenis Barang</label>
-                          <select name="jenis" class="form-control">
-                            <option>Pilih Jenis</option>
-                            <option>Barang Pecah Belah</option>
-                            <option>Barang Antik</option>
-                          </select>
-                        </div>
                       <div class='form-group col-md-2'>
                           <label>Jumlah Barang</label>
-                          <input type="number" name="jumlah" <?php if (!empty($_GET['j'])) {?>value="<?php echo $_GET['j'];?>"<?php } ?> class="form-control">
+                          <input type="number" name="jumlah" placeholder="Masukkan Jumlah" <?php if (!empty($_GET['j'])) {?>value="<?php echo $_GET['j'];?>"<?php }else{?>value="1000"<?php } ?> class="form-control">
                       </div>
-                      <div class='form-group col-md-2'>
+                      <div class='form-group col-md-1'>
+                          <label>Satuan</label>
+                          <select class="form-control" name="satuan">
+                            <option>Pilih Satuan</option>
+                            <option value="1" selected>Kl</option>
+                            <option value="2">l</option>
+                            <option value="3">Dus</option>
+                          </select>
+                      </div>
+                      <div class='form-group col-md-1'>
+                          <label>Pengiriman</label>
+                            <input type="number" name="kali" class="form-control" placeholder="Masukkan Angka" value="1">
+                      </div>
+                      <div class='form-group col-md-3'>
+                          <label>Tempat Serah Terima</label>
+                          <select class="form-control" name="tempat">
+                            <option>Pilih Tempat</option>
+                            <option selected>Gudang (Pertamina)</option>
+                            <option>Gudang Saya (User)</option>
+                          </select>
+                      </div>
+                      <div class='form-group col-md-1'>
                         <label>.</label>
-                          <input type="submit" name="cek" value="Cek Harga" class="form-control btn-primary">
+                          <input type="submit" name="cek" value="Cek" class="form-control btn-primary">
                       </div>
+                      <div class='form-group col-md-1'>
+                        <label>.</label>
+                          <input type="submit" name="tambah" value="Add" class="form-control btn-primary">
                       </div>
-                      <div class="form-row">
+                    </div>
+                    </div>
+                  </form>
+
+                  <div class="form-row">
                       <div class="col-12">
                         <div class='form-group col-md-12'>
                           <label>.</label>
-                            <input type="submit" name="cek" value="Kirim" class="form-control btn-primary">
+                            <input type="submit" name="cek" value="Lihat Keranjang" class="form-control btn-primary">
                         </div>  
                       </div>
-                      </div>
                     </div>
-
-            <div class="row">
-            </div>
-                    </form>
-<!--                     <div class="card-body">
-                      <div class="button">
-                          <a href="lap_barang.php" target="_blank" class="btn btn-icon icon-left btn-danger"><i class="fas fa-print"></i> Cetak</a>
-                      </div>
-                    </div> -->
                 </div>
               </div>
             </div>
@@ -108,3 +120,5 @@
       </div>
 
 <?php include 'footer.php' ?>
+<!--                             <td><?php //echo date('d-M-Y', strtotime($b[3])) ?></td>
+                            <td><?php // echo $b[4] ?></td> -->

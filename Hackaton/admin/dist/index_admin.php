@@ -88,54 +88,6 @@
                       		<a href="lap_barang.php" target="_blank" class="btn btn-icon icon-left btn-danger"><i class="fas fa-print"></i> Cetak</a>
                   		</div>
                   	</div> -->
-
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table table-striped" id="table-2">
-                        <thead>
-                          <tr>
-                            <th class="text-center">
-                              <div class="custom-checkbox custom-control">
-                                <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
-                                <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
-                              </div>
-                            </th>
-                            <th>No.</th>
-                            <th>Kode Barang</th>
-                            <th>Nama Barang</th>
-                            <th>Harga</th>
-                            <th>Jumlah Pemesanan</th>
-                            <th>Checkout</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <?php 
-                          $brg=mysqli_query($conn, "SELECT * FROM barang");
-                          $no=1;
-                          while($b=mysqli_fetch_array($brg)){
-                            ?>                                 
-                          <tr>
-                            <td>
-                              <div class="custom-checkbox custom-control">
-                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1">
-                                <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
-                              </div>
-                            </td>                                
-                            <td><?php echo $no++ ?></td>
-                            <td><?php echo $b[1] ?></td>
-                            <td><?php echo ucwords($b[2]) ?></td>
-<!--                             <td><?php //echo date('d-M-Y', strtotime($b[3])) ?></td>
-                            <td><?php // echo $b[4] ?></td> -->
-                            <td><?php echo 'Rp.'.number_format($b[5]) ?></td>
-                            <td><input type="number" class="form-control" min="0" name="jumlah"></td>
-                            <td><a href="" class="form-control btn-warning"><i class="fas fa-shopping-cart"></i></a></td>
-                          </tr>
-<?php } ?>
-                          
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table table-striped" id="table-1">
@@ -146,9 +98,8 @@
                             </th>
                             <th>Kode Barang</th>
                             <th>Nama Barang</th>
-                            <!-- <th>Tanggal Masuk</th> -->
-                            <!-- <th>Jumlah (Unit)</th> -->
                             <th>Harga</th>
+                            <th>Detail</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -161,9 +112,8 @@
                             <td><?php echo $no++ ?></td>
                             <td><?php echo $b[1] ?></td>
                             <td><?php echo ucwords($b[2]) ?></td>
-<!--                             <td><?php //echo date('d-M-Y', strtotime($b[3])) ?></td>
-                            <td><?php // echo $b[4] ?></td> -->
                             <td><?php echo 'Rp.'.number_format($b[5]) ?></td>
+                            <td width="5%"><a href="detail_barang.php" class="form-control btn-primary"><i class="far fa-file-alt"></i></a></td>
                           </tr>
                           <?php } ?>
                         </tbody>
@@ -178,3 +128,7 @@
       </div>
 
 <?php include 'footer.php' ?>
+                            <!-- <th>Tanggal Masuk</th> -->
+                            <!-- <th>Jumlah (Unit)</th> -->
+<!--                             <td><?php //echo date('d-M-Y', strtotime($b[3])) ?></td>
+                            <td><?php // echo $b[4] ?></td> -->

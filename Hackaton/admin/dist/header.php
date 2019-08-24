@@ -4,7 +4,7 @@
 <?php 
   session_start();
   if(!isset($_SESSION['uname'])){ 
-    header("location:../../index.php");
+    header("location:../index.php");
   }
   include 'koneksi.php';
   include 'tes6.php';
@@ -145,7 +145,7 @@
         </ul>
       </nav>
       <?php 
-          if ($_SESSION['level']=='admin') {
+          if ($_SESSION['level']==9) {
             # code...
        ?> 
       <div class="main-sidebar sidebar-style-2">
@@ -162,6 +162,7 @@
             <li><a class="nav-link active" href="index_admin.php"><i class="fas fa-fire"></i> <span>Cek Ketersediaan</span></a></li>
             <li><a class="nav-link active" href="kirim.php"><i class="fas fa-pencil-ruler"></i>  <span>Kirim Barang</span></a></li>
             <li><a class="nav-link active" href="cekstat.php"><i class="far fa-file-alt"></i> <span>Cek Status Pengiriman</span></a></li>
+            <li><a class="nav-link active" href="keranjang.php"><i class="far fa-file-alt"></i> <span>Keranjang</span></a></li>
             <!-- <li class="menu-header">Entry</li> -->
 
             
