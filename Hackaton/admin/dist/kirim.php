@@ -14,34 +14,45 @@
      idf = (idf-1) + 2;
      document.getElementById("idf").value = idf;
    }
+
    function hapusElemen(idf) {
      $(idf).remove();
    }
 </script>
 <?php
   include "config/koneksi.php";
-  if (isset($_POST['save'])) {
-      
-    $daerah = $_POST['daerah'];
-    $nomor = $_POST['nomor'];
-    $tahun = $_POST['tahun'];
-    $tentang = $_POST['tentang'];
-    $file = $_FILES['file']['name'];
+  if (isset($_GET['save'])) {
+      $id = $_SESSION['id'];
+    $barang = $_GET['barang'];
+    $kali = $_GET['kali'];
+    $tempat = $_GET['tempat'];
+    $jml = $_GET['jumlah'];
+    $tahun = $_GET['tahun'];
+    $harga = 5000;
+    $satuan = $_GET['satuan'];
+    $tentang = $_GET['tentang'];
     $author = $_SESSION['nama'];
-    $today = date("F j, Y, g:i a");
+    $tgl_m = date("d-m-Y");
+    $total = $harga * $jml;
+    if ($satuan == 'l' && $jml >10000 ) {
+       $diskon = 0.1 * $total;
+    }elseif ($satuan == 'kl' && $jml >10 ) {
+       $diskon = 0.1 * $total;
+    }
 
     $query = "INSERT INTO lat VALUES";
 
-    $index = 0;
-    foreach ($daerah as $wilayah) { 
-      $query .= "('".null."','".$wilayah."','".$nomor[$index]."','".$tahun[$index]."','".$tentang[$index]."','".$file[$index]."','".$author."','".$today."'),";
-      $index++;
-    }
+    echo $barang." ".$id." ".$jml." ".$harga." ".$satuan." ".$kali." ".$tempat." ".$tgl_m." ".$diskon." ".$total." ".$tgl_po." "."status";
+    // $index = 0;
+    // foreach ($daerah as $wilayah) { 
+    //   $query .= "('".null."','".$wilayah."','".$nomor[$index]."','".$tahun[$index]."','".$tentang[$index]."','".$file[$index]."','".$author."','".$today."'),";
+    //   $index++;
+    // }
 
-    $query = substr($query, 0, strlen($query) - 1).";";
-    mysqli_query($conn, $query) or mysql_error();
+    // $query = substr($query, 0, strlen($query) - 1).";";
+    // mysqli_query($conn, $query) or mysql_error();
 
-    echo "<meta http-equiv=refresh content=1;url=kirim.php?input=sukses>";
+    // echo "<meta http-equiv=refresh content=1;url=kirim.php?input=sukses>";
 
       // $query = "insert into lat values $data;";
       // $insert = mysql_query($query);
@@ -97,11 +108,62 @@
                      <div class='form-row'>
                       <div class='form-group col-md-2'>
                           <input id="idf" value="1" type="hidden" />
-                          <button name="add" onclick="tambahHobi(); return false;"  class="form-control btn-danger" style="color: white">Pesan Sekarang</button>
+                          <button name="add" onclick="tambahHobi(); return false;"  class="form-control btn-danger" style="color: white">Tambah Pesanan</button>
                       </div>
                     </div>
                   </div>
-                  <form method="get" >
+                  <form method="get" action="Keranjang.php" >
+                  <div class="card-body">
+                     <div class='form-row'>
+                      <div class='form-group col-md-2'>
+                          <label>Nama Barang</label>
+                          <select class="form-control" name="barang">
+                              <option>Nama Barang</option>
+                            <?php 
+                              include 'koneksi.php';
+                              $query = mysqli_query($conn, "SELECT * FROM barang");
+                              while ($data = mysqli_fetch_array($query)) {
+                             ?>
+                              <option value="<?php echo $data['id_brg'] ?>"><?php echo $data['nm_brg'] ?></option>
+                            <?php } ?>
+                          </select>
+                      </div>
+                      <div class='form-group col-md-2'>
+                          <label>Jumlah Barang</label>
+                          <input type="number" name="jumlah" placeholder="Masukkan Jumlah" <?php if (!empty($_GET['j'])) {?>value="<?php echo $_GET['j'];?>"<?php }else{?>value="1000"<?php } ?> class="form-control">
+                      </div>
+                      <div class='form-group col-md-1'>
+                          <label>Satuan</label>
+                          <select class="form-control" name="satuan">
+                            <option>Pilih Satuan</option>
+                            <option value="1" selected>Kl</option>
+                            <option value="2">l</option>
+                            <option value="3">Dus</option>
+                          </select>
+                      </div>
+                      <div class='form-group col-md-1'>
+                          <label>Pengiriman</label>
+                            <input type="number" name="kali" class="form-control" placeholder="Masukkan Angka" value="1">
+                      </div>
+                      <div class='form-group col-md-3'>
+                          <label>Tempat Serah Terima</label>
+                          <select class="form-control" name="tempat">
+                            <option>Pilih Tempat</option>
+                            <option selected>Gudang (Pertamina)</option>
+                            <option>Gudang Saya (User)</option>
+                          </select>
+                      </div>
+                      <div class='form-group col-md-2'>
+                        <label>.</label>
+                          <input type="submit" name="cek" value="Cek Harga" class="form-control btn-primary">
+                      </div>
+                      <div class='form-group col-md-1'>
+                        <label>Total</label>
+                            <p>Rp. <b></b></p>
+                      </div>
+                    </div>
+                    </div>
+
                    <div id="divHobi">
                    </div>
    <button type="submit" class="form-control btn-primary" name="save">Masukkan ke Keranjang</button>
@@ -113,8 +175,6 @@
 </div>
 </section>
 
-</body>
-</html>
 <?php 
   include"footer.php"; 
 ?>

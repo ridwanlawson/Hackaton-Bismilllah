@@ -9,6 +9,21 @@ include 'header.php' ?>
           <div class="section-header">
               <h1>Premium</h1>
           </div>
+          <?php 
+            error_reporting(0);
+            if ($_GET['status'] == 'po') {
+              ?>
+              <div class="card-body">
+               <div class='form-row'>
+                <div class='form-group col-md-2'>
+                    <input id="idf" value="1" type="hidden" />
+                    <a href="po.php" name="po"  class="form-control btn-danger" style="color: white; border-style: none;" target="_blank"><center>Cetak PO</center></a>
+                </div>
+              </div>
+              <p>Note : PO yang dicetak hanya untuk disimpan bukan untuk diserahkan pada PT Pertamina</p>
+            </div>
+<?php            }else{
+           ?>
           <div class="section-body">
                <div class="card-body">
                 <h4></h4>
@@ -74,10 +89,13 @@ include 'header.php' ?>
                       <div class="col-12">
                         <div class='form-group col-md-12'>
                           <label>.</label>
+                          <form method="get" action="keranjang.php?status=po">
+                            <input type="hidden" name="status" value="po">
                             <input type="submit" name="cek" value="Pesan Sekarang" class="form-control btn-primary">
+                          </form>
                         </div>  
                       </div>
                       </div>
                   </form>
 
-<?php 'footer.php' ?>
+<?php } include 'footer.php' ?>

@@ -20,7 +20,7 @@ if(mysqli_num_rows($query)==1){
 		$_SESSION['email']=$email;
 		$_SESSION['uname']=$uname;
 		$_SESSION['level']=$level;
-		echo '<script language="javascript">window.location="dist/index_admin.php";</script>';
+		echo '<script language="javascript">window.location="dist/home_p.php";</script>';
 	 }elseif($level == 2){
 	$row = mysqli_fetch_assoc($query);
 	$id = $row['id'];
@@ -43,7 +43,7 @@ if(mysqli_num_rows($query)==1){
 		$_SESSION['email']=$email;
 		$_SESSION['uname']=$uname;
 		$_SESSION['level']=$level;
-		echo '<script language="javascript">window.location="dist/index_admin.php";</script>';
+		echo '<script language="javascript">window.location="dist/home.php";</script>';
 	 }else{
     	echo '<script language="javascript">window.location="index.php?pesan=gagal";</script>';
 	 } 

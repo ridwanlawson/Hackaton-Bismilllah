@@ -57,6 +57,9 @@
                     </div>
                   </form>
                 </div>
+                <?php 
+                  if (!empty($_GET['resi'])) {
+                 ?>
                 <div class="row mt-4">
                       <div class="col-12 col-lg-8 offset-lg-2">
                         <div class="wizard-steps">
@@ -70,21 +73,21 @@
                           </div>
                           <div class="wizard-step wizard-step-active">
                             <div class="wizard-step-icon">
-                              <i class="fas fa-credit-card"></i>
-                            </div>
-                            <div class="wizard-step-label">
-                              Payment Completed
-                            </div>
-                          </div>
-                          <div class="wizard-step wizard-step-active">
-                            <div class="wizard-step-icon">
                               <i class="fas fa-shipping-fast"></i>
                             </div>
                             <div class="wizard-step-label">
                               Product Shipped
                             </div>
                           </div>
-                          <div class="wizard-step wizard-step-success">
+                          <div class="wizard-step wizard-step-danger">
+                            <div class="wizard-step-icon">
+                              <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="wizard-step-label">
+                              Payment Completed
+                            </div>
+                          </div>
+                          <div class="wizard-step wizard-step-danger">
                             <div class="wizard-step-icon">
                               <i class="fas fa-check"></i>
                             </div>
@@ -95,6 +98,7 @@
                         </div>
                       </div>
                     </div>
+                <?php } ?> 
               </div>
             </div>
           </div>
@@ -153,7 +157,7 @@
                          <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
                            <div class="dropdown-menu">
                             <div class="dropdown-title">Options</div>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View On Maps</a>
+                            <a href="lokasi.php" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View On Maps</a>
                             <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
                           </div>
                         </div>

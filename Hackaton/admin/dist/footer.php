@@ -37,7 +37,8 @@
   <script src="assets/js/page/bootstrap-modal.js"></script>
   <script src="assets/js/page/modules-datatables.js"></script>
   <script src="assets/modules/jquery-selectric/jquery.selectric.min.js"></script>
-
+    <script src="assets/modules/dropzonejs/min/dropzone.min.js"></script>
+  <script src="assets/js/page/components-multiple-upload.js"></script>
   <!-- JS Libraies -->
   <script src="http://maps.google.com/maps/api/js?key=AIzaSyB55Np3_WsZwUQ9NS7DP-HnneleZLYZDNw&amp;sensor=true"></script>
   <script src="assets/modules/gmaps.js"></script>
@@ -49,5 +50,21 @@
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
+  <!-- Start of LiveChat (www.livechatinc.com) code -->
+<script type="text/javascript">
+  window.__lc = window.__lc || {};
+  window.__lc.license = 11229782;
+  (function() {
+    var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+    lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+  })();
+</script>
+<noscript>
+<a href="https://www.livechatinc.com/chat-with/11229782/" rel="nofollow">Chat with us</a>,
+powered by <a href="https://www.livechatinc.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a>
+</noscript>
+<!-- End of LiveChat code -->
+
 </body>
 </html>

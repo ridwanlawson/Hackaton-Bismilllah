@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
   <!-- CSS Libraries -->
+    <link rel="stylesheet" href="assets/modules/dropzonejs/dropzone.css">
   <link rel="stylesheet" href="assets/modules/jqvmap/dist/jqvmap.min.css">
   <link rel="stylesheet" href="assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css">
@@ -182,39 +183,35 @@
           <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li><a class="nav-link active" href="home.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li class="menu-header">Dashboard</li>
-            
-            <li><a class="nav-link active" href="index_admin.php"><i class="fas fa-fire"></i> <span>Cek Ketersediaan</span></a></li>
+            <li class="menu-header">Menus</li>
+            <li><a class="nav-link active" href="index_admin.php"><i class="fas fa-archive"></i> <span>Cek Ketersediaan</span></a></li>
             <li><a class="nav-link active" href="kirim.php"><i class="fas fa-pencil-ruler"></i>  <span>Pesan Barang </span></a></li>
+            <li><a class="nav-link active" href="kontrak.php"><i class="far fa-file-alt"></i> <span>Kontrak</span></a></li>
             <li><a class="nav-link active" href="keranjang.php"><i class="far fa-file-alt"></i> <span>Keranjang</span></a></li>
-            <li><a class="nav-link active" href="cekstat.php"><i class="far fa-file-alt"></i> <span>Cek Status Pengiriman</span></a></li>
-            <!-- <li class="menu-header">Entry</li> -->
-
-            
+            <li><a class="nav-link active" href="cekstat.php"><i class="fas fa-calendar-check"></i> <span>Cek Status Pengiriman</span></a></li>
           </ul>
         </aside>
       </div>
-    <?php  }elseif ($_SESSION['level']=='user') {?>
-            <div class="main-sidebar sidebar-style-2">
+    <?php  }elseif ($_SESSION['level']== 1) {?>
+      <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html">SMKN 2 Padang Panjang</a>
+            <a href="index.php">Premium</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">PSB</a>
+            <a href="index.php">Prm</a>
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            
-            <li><a class="nav-link active" href="siswa.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li> 
-            
+            <li><a class="nav-link active" href="home_p.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+            <li class="menu-header">Menus</li>
+            <li><a class="nav-link active" href="approval.php"><i class="fas fa-pen-fancy"></i> <span>Approval</span></a></li>
+            <li><a class="nav-link active" href="index_admin.php"><i class="fas fa-archive"></i> <span>Cek Ketersediaan</span></a></li>
+<!--             <li><a class="nav-link active" href="kirim.php"><i class="fas fa-pencil-ruler"></i>  <span>Pesan Barang </span></a></li>
+            <li><a class="nav-link active" href="keranjang.php"><i class="far fa-file-alt"></i> <span>Keranjang</span></a></li> -->
+            <li><a class="nav-link active" href="cekstat.php"><i class="fas fa-calendar-check"></i> <span>Cek Status Pengiriman</span></a></li>
           </ul>
-
-          <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-            <a href="logout.php" class="btn btn-primary btn-lg btn-block btn-icon-split">
-              <i class="fas fa-rocket"></i> Web PSB
-            </a>
-          </div>        </aside>
+        </aside>
       </div>
     <?php    }
      ?>
